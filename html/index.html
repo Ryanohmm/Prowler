@@ -3,30 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/index.css" type="text/css">
+    <link rel="stylesheet" href="../css/index.css" type="text/css">
     <title>Prowler Login</title>
 </head>
 
 <header>
     <nav>
-        <li href="">Login Verification</li>
-        <li href="search.html">Search</li>
-        <li href="weapons.html">Weapons Cache</li>
-        <li href="forecast.html">Forecasting Calamity</li>
+   <input type="checkbox" id="menu-toggle" aria-label="Toggle-menu">
+    <label for="menu-toggle" class="menu-container">
+      <div class="menu-icon"></div>
+    </label>
+    <div class="dropdown-menu">
+        <ul>
+        <li><a href="">Login Verification</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="weapons.html">Weapons Cache</a></li>
+        <li><a href="forecast.html">Forecasting Calamity</a></li>
+        </ul>
+        </div>
     </nav>
 </header>
 
 <body>
 <main>
-<form action="#" method="post">
+
+<form id="prowler-form" action="#" method="post">
     <label for="username"></label>
     <input type="text" placeholder="Insert Username Here." id="username" required="aria-label">
+
     <label for="password"></label>
     <input type="password" placeholder="Insert Password Here." id="password" required="aria-label">
-    <input type="submit" value="Login">
+
+    <button type="submit">Login</button>
+
+    <button type="reset">Reset</button>
 </form>
 
 </form>
-</main>    
+</main>
+<footer>
+    <promo>Miles, if you're reading this, my username is your codename, and the password is your father's name.</promo>
+</footer>    
 </body>
 </html>

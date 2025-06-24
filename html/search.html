@@ -3,31 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/search.css" type="text/css">
+    <link rel="stylesheet" href="../css/search.css" type="text/css">
     <title>Search for Enemies or Allies</title>
 </head>
 
 <header>
     <nav>
-        <li href="index.html">Login Verification</li>
-        <li href="">Search</li>
-        <li href="weapons.html">Weapons Cache</li>
-        <li href="forecast.html">Forecasting Calamity</li>
+   <input type="checkbox" id="menu-toggle" aria-label="Toggle-menu">
+    <label for="menu-toggle" class="menu-container">
+      <div class="menu-icon"></div>
+    </label>
+    <div class="dropdown-menu">
+        <ul>
+        <li> <a href=""></a>Search</li>
+        <li> <a href="weapons.html"></a>Weapons Cache</li>
+        <li><a href="forecast.html"></a>Forecasting Calamity</li>
+        </ul>
+        </div>
     </nav>
 </header>
 
 <body>
 <main>
-    <h1>Miles, I have outfitted this website to help you on your journey. Learn from my mistakes, be the hero you are.</h1>
-    <img src="./img/prowler.jpg" alt="prowler picture">
+    <aside>
+    <h1>Miles, I Have Outfitted This Website To Help You On Your Journey. Learn From My Mistakes, Be The Hero I Know You Are.</h1>
+    <img src="../img/prowler.jpg" alt="prowler picture" width="300" height="200">
+    </aside>
+
     <div class="container">
          <input id="searchbar"  
                type="text" name="search" 
                placeholder="Search Heroes or Villains...">
+               <button>Search</button>
     </div>
+
 </main>    
 </body>
 <footer>
-    <img src="./img/purple.jpg" alt="purple background picture">
+    <promo>Don't Let Fear Guide You, Miles.</promo>
+    <img src="../img/purple.jpg" alt="purple background picture" width="600" height="300">
 </footer>
 </html>

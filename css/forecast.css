@@ -1,0 +1,131 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: linear-gradient(rgb(15, 88, 9), rgb(129, 17, 124));
+  border: solid black;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: flex-end;
+    background: rgb(9, 133, 9);
+    border: solid white;
+    margin: 50px;
+    padding: 30px;
+}
+
+header {
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ background: rgb(131, 19, 103);
+ border: solid rgb(240, 243, 240);
+ margin: 50px;
+ padding: 25px;
+}
+
+.menu-container {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+    }
+
+    
+    .menu-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 3px;
+      background-color: black;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-icon::before,
+    .menu-icon::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 3px;
+      background-color: black;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-icon::before {
+      transform: translateY(-10px);
+    }
+
+    .menu-icon::after {
+      transform: translateY(10px);
+    }
+
+    #menu-toggle {
+      display: none;
+    }
+
+    #menu-toggle:checked + .menu-container .menu-icon {
+      background-color: transparent;
+    }
+
+    #menu-toggle:checked + .menu-container .menu-icon::before {
+      transform: rotate(45deg);
+      background-color: black;
+    }
+
+    #menu-toggle:checked + .menu-container .menu-icon::after {
+      transform: rotate(-45deg);
+      background-color: black;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 200px;
+      background-color: rgb(17, 2, 2);
+      border: solid rgb(155, 17, 155);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .dropdown-menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 0;
+    }
+
+    .dropdown-menu ul li {
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu ul li:hover {
+      background-color: rgb(6, 58, 23);
+    }
+
+    
+    #menu-toggle:checked ~ .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+ul li {
+  list-style: none;
+  display: flex;
+  border: solid rgb(8, 66, 18);
+  color: rgb(185, 25, 190);
+  padding-left: 24px;
+  margin-bottom: 8px;
+}
