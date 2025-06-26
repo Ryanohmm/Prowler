@@ -115,7 +115,7 @@ header {
     }
 
     
-    #menu-toggle:checked ~ .dropdown-menu {
+    .menu-wrapper #menu-toggle:checked ~ .dropdown-menu {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
@@ -128,4 +128,9 @@ ul li {
   color: rgb(185, 25, 190);
   padding-left: 24px;
   margin-bottom: 8px;
+}
+
+footer{
+ display: flex; 
+ justify-content: center;
 }

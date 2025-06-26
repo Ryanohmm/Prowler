@@ -9,6 +9,7 @@ body {
 main {
     display:flex;
     flex-direction:row;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: flex-end;
     background: rgb(9, 133, 9);
@@ -115,7 +116,7 @@ header {
     }
 
     
-    #menu-toggle:checked ~ .dropdown-menu {
+    .menu-wrapper #menu-toggle:checked ~ .dropdown-menu {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
@@ -148,10 +149,40 @@ button {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
           
         }
+
+
+h1 {
+display:flex;
+flex-wrap: wrap;
+justify-content: right;
+text-decoration: none;
+color:rgb(90, 14, 109);
+}
+
+h1:hover {
+text-decoration: underline;
+background-color:black;
+color:green;
+}
+
 aside {
     display: flex;
-    justify-content: flex-end;
+    flex-wrap: nowrap;
+    justify-content: right;
     align-items: center;
+}
+
+
+@media screen and (max-width: 600px) {
+  .image {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+footer{
+ display: flex; 
+ justify-content: center;
 }
 
 promo {

@@ -8,16 +8,16 @@
 </head>
 
 <header>
-    <nav>
+    <nav class="menu-wrapper">
    <input type="checkbox" id="menu-toggle" aria-label="Toggle-menu">
     <label for="menu-toggle" class="menu-container">
       <div class="menu-icon"></div>
     </label>
     <div class="dropdown-menu">
         <ul>
-        <li> <a href="search.html"></a>Search</li>
-        <li> <a href=""></a>Weapons Cache</li>
-        <li><a href="forecast.html"></a>Forecasting Calamity</li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="">Abilities</a></li>
+        <li><a href="forecast.html">Forecasting Calamity</a></li>
         </ul>
         </div>
     </nav>
@@ -25,12 +25,26 @@
 
 <body>
 <main>
-<img src="aurora.jpg" alt="background picture">
+<img class ="images" src="../img/aurora.jpg" alt="background picture" width="400" height="200">
+<aside>
+    <div class="container">
+         <input id="searchbar"  
+               type="text" name="search" 
+               placeholder="Abilities..."
+               oninput="search()">
+               <button type="submit">Search</button>
+               <button type="reset">Reset</button>
+    </div>
+    <div class="card" id="infoCard">
+    <h3 id="cardTitle"></h3>
+    <p id="cardDescription"></p>
+  </div>
+</aside>
 
 
 </main>    
 </body>
 <footer>
-<img src="purplegreen.jpg" alt="purple green background picture">
+<img class="image" src="../img/prowler1.jpg" alt="purple green background picture" width="400" height="300">
 </footer>
 </html>

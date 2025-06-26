@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/forecast.css" type="text/css">
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>  
     <title>Weapons Cache</title>
 </head>
 
 <header>
-    <nav>
+    <nav class="menu-wrapper">
    <input type="checkbox" id="menu-toggle" aria-label="Toggle-menu">
     <label for="menu-toggle" class="menu-container">
       <div class="menu-icon"></div>
     </label>
     <div class="dropdown-menu">
         <ul>
-        <li> <a href="search.html"></a>Search</li>
-        <li> <a href="weapons.html"></a>Weapons Cache</li>
-        <li><a href=""></a>Forecasting Calamity</li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="weapons.html">Weapons Cache</a></li>
+        <li><a href="">Forecasting Calamity</a></li>
         </ul>
         </div>
     </nav>
@@ -25,10 +28,57 @@
 
 <body>
 <main>
-<img src="aurora.jpg" alt="background picture">
-</main>    
+    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+    <script>
+  const xValues = ["Crime", "Criminals", "Masked Entrance", "Powers", "Threats"];
+  const yValues = [42, 40, 48, 45, 37];
+  const barColors = ["white", "purple", "red", "orange", "black"];
+  const fontColors = ["white"];
+
+  new Chart("myChart", {
+    type: "bar",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues,
+        fontColor: fontColors
+      }]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: "Unmasking the Hero",
+        fontColor: fontColors
+      },
+    scales: {
+    xAxes: [{
+      ticks: {
+        fontColor: "white" // ⬅ x-axis values
+      },
+      gridLines: {
+        color: "rgba(255,255,255,0.1)" // optional: subtle grid lines
+      }
+    }],
+    yAxes: [{
+      ticks: {
+        fontColor: "white" // ⬅ y-axis values
+      },
+      gridLines: {
+        color: "rgba(255,255,255,0.1)"
+      }
+    }]
+  }
+}
+});
+</script>
+
+</main>  
+
 </body>
 <footer>
-<img src="purplegreen.jpg" alt="purple green background picture">
+
 </footer>
+
 </html>

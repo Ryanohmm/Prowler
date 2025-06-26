@@ -115,7 +115,7 @@ header {
     }
 
     
-    #menu-toggle:checked ~ .dropdown-menu {
+    .menu-wrapper #menu-toggle:checked ~ .dropdown-menu {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
@@ -128,4 +128,87 @@ ul li {
   color: rgb(185, 25, 190);
   padding-left: 24px;
   margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="search"],
+button {
+  margin: 30px;
+  padding: 15px;
+  color: rgb(156, 22, 156);
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+input[type="text"]::placeholder,
+input[type="search"]::placeholder {
+  color: rgb(193, 29, 199);
+}
+
+button {
+            padding: 15px 30px;
+            background-color: #14c256;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            
+        }
+        button:hover {
+            background-color: rgb(68, 7, 65);
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          
+        }
+
+aside {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+footer{
+ display: flex; 
+ justify-content: center;
+}
+.image {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
+  gap: 50px;
+}
+
+.image img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .image {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 50px;
+}
+
+.images img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .images {
+    flex-direction: column;
+    align-items: center;
+  }
 }
