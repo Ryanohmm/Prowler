@@ -27,22 +27,28 @@
 <body>
 <main>
 
-<form id="prowler-form" action="#" method="post">
+<form id="prowler-form">
+    <div>
     <label for="username"></label>
-    <input type="text" placeholder="Insert Username Here." id="username" required="aria-label">
+    <input type="text" placeholder="Insert Username Here." id="username" required aria-label="username">
+    <span id="username-error" class="error-message"></span>
+    </div>
 
+    <div>
     <label for="password"></label>
-    <input type="password" placeholder="Insert Password Here." id="password" required="aria-label">
+    <input type="password" placeholder="Insert Password Here." id="password" required aria-label="password">
+    <span id="password-error" class="error-message"></span>
+    </div>
 
     <button type="submit">Login</button>
 
     <button type="reset">Reset</button>
 </form>
 
-</form>
 </main>
 <footer>
     <promo>Miles, if you're reading this, my username is your codename, and the password is your father's name.</promo>
-</footer>    
+</footer> 
+<script src="../js/index.js"></script>   
 </body>
 </html>

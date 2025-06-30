@@ -157,6 +157,28 @@ input[type="password"]::placeholder {
   color: rgb(193, 29, 199);
 }
 
+
+input:invalid {
+  border: 2px solid red;
+  display: hidden;
+}
+
+
+input:valid {
+  border: 2px solid black;
+  display: hidden;
+}
+
+.error-message {
+  display: block;
+  color: #f82ff0;
+  font-size: 0.9rem;
+  padding-top: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+
 button {
             padding: 15px 30px;
             background-color: #14c256;
