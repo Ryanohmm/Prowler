@@ -163,6 +163,9 @@ input:invalid {
   display: hidden;
 }
 
+input:invalid:required {
+  background-image: linear-gradient(to right, pink, lightgreen);
+}
 
 input:valid {
   border: 2px solid black;
