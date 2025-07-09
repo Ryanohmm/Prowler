@@ -87,7 +87,7 @@ header {
     .dropdown-menu {
       position: absolute;
       top: 60px;
-      left: 0;
+      left: 50%;
       width: 200px;
       background-color: rgb(17, 2, 2);
       border: solid rgb(155, 17, 155);
