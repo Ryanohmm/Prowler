@@ -1,41 +1,52 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const searchInput = document.getElementById("searchbar");
-  const searchButton = document.querySelector("button[type='submit']");
-  const resetButton = document.querySelector("button[type='reset']");
-  const resultsList = document.querySelector(".results ol");
+let allCharacters = [];
 
-  searchButton.addEventListener("click", async () => {
-    const query = searchInput.value.trim().toLowerCase();
-    if (!query) return;
+async function fetchCharacters() {
+  const spinner = document.getElementById('loading-spinner');
+  spinner.classList.remove('hidden');
 
-    try {
-      const response = await fetch("http://localhost:3000/characters");
-      const data = await response.json();
-      const characters = data.data.results;
+  try {
+    const response = await fetch('http://localhost:3000/characters');
+    const data = await response.json();
+    allCharacters = data.data.results;
+    renderCharacters(allCharacters);
+  } catch (error) {
+    console.error('❌ Failed to fetch characters:', error);
+  } finally {
+    spinner.classList.add('hidden');
+  }
+}
 
-      const filtered = characters.filter(character =>
-        character.name.toLowerCase().includes(query)
-      );
+function renderCharacters(characters) {
+  const container = document.getElementById('character-container');
+  container.innerHTML = '';
 
-      resultsList.innerHTML = "";
+  const hoverSound = document.getElementById('hover-sound');
 
-      if (filtered.length === 0) {
-        resultsList.innerHTML = "<li>No results found.</li>";
-      } else {
-        filtered.forEach(character => {
-          const li = document.createElement("li");
-          li.textContent = character.name;
-          resultsList.appendChild(li);
-        });
-      }
-    } catch (error) {
-      console.error("Error fetching characters:", error);
-      resultsList.innerHTML = "<li>Error fetching results.</li>";
-    }
+  characters.forEach(character => {
+    const card = document.createElement('div');
+    card.className = 'character-card';
+
+    const imgSrc = `${character.thumbnail.path}.${character.thumbnail.extension}`;
+    card.innerHTML = `
+      <img src="${imgSrc}" alt="${character.name}">
+      <h3>${character.name}</h3>
+    `;
+
+    card.addEventListener('mouseenter', () => {
+      hoverSound.currentTime = 0;
+      hoverSound.play();
+    });
+
+    container.appendChild(card);
   });
+}
 
-  resetButton.addEventListener("click", () => {
-    searchInput.value = "";
-    resultsList.innerHTML = "<li>Results</li><li>Results</li><li>Results</li><li>Results</li><li>Results</li>";
-  });
+document.getElementById('search-bar').addEventListener('input', (e) => {
+  const query = e.target.value.toLowerCase();
+  const filtered = allCharacters.filter(char =>
+    char.name.toLowerCase().includes(query)
+  );
+  renderCharacters(filtered);
 });
+
+document.addEventListener('DOMContentLoaded', fetchCharacters);

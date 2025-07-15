@@ -29,6 +29,61 @@ header {
  padding: 25px;
 }
 
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #1a1a1a, #333);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.music-player {
+  text-align: center;
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+  font-size: 24px;
+  font-family: 'Orbitron', sans-serif; /* Futuristic font */
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #555;
+}
+
+#seek-bar {
+  width: 100%;
+  margin: 10px 0;
+}
+
+#current-time, #duration {
+  font-size: 14px;
+}
+
 .menu-container {
       position: relative;
       width: 50px;
@@ -171,6 +226,71 @@ aside {
     justify-content: right;
     align-items: center;
 }
+
+#search-bar {
+  width: 80%;
+  padding: 12px;
+  margin: 20px auto;
+  display: block;
+  font-size: 16px;
+  border: 2px solid #8a2be2;
+  background-color: #111;
+  color: #f82ff0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #8a2be2;
+}
+
+.spinner {
+  border: 6px solid #222;
+  border-top: 6px solid #f82ff0;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+
+.character-card {
+  background: #222;
+  color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.character-card:hover {
+  transform: scale(1.05);
+}
+
+.character-card img {
+  width: 100%;
+  height: auto;
+}
+
+.character-card h3 {
+  padding: 10px;
+  font-size: 1rem;
+}
+
 
 
 @media screen and (max-width: 600px) {

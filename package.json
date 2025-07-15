@@ -2,9 +2,10 @@
   "name": "prowler",
   "version": "1.0.0",
   "description": "",
-  "main": "search.js",
+  "main": "api/search.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon api/search.js",
+    "debug": "nodemon --inspect api/search.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,9 @@
   },
   "homepage": "https://github.com/Ryanohmm/Prowler#readme",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
     "https-proxy-agent": "^7.0.6",
     "node-fetch": "^3.3.2"
   },
