@@ -29,26 +29,95 @@ header {
  padding: 25px;
 }
 
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #1a1a1a, #333);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#activate-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 100vh;
+  background-color: black;
+  color: lime;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  z-index: 9999;
+  cursor: pointer;
+  box-shadow: 0 4px 15px purple;
 }
 
+
+#activate-overlay:hover {
+  color: purple;
+  border: solid purple;
+  box-shadow: 0 4px 15px lime;
+}
+
+.glitch-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#intro-screen {
+  animation: fadeOut 1s ease forwards;
+  animation-delay: 4s;
+}
+
+.glitch-text {
+  font-size: 2rem;
+  color: lime;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 2px #0f0, 0 0 5px #0f0;
+  animation: glitchEffect 1s infinite;
+}
+
+@keyframes glitchEffect {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+
+.glitch-screen.active {
+  display: block;
+  animation: glitchEffect 1s infinite;
+}
+
+
 .music-player {
+  margin: 32px;
+  padding: 32px;
   text-align: center;
-  background: #222;
+  background: rgb(129, 17, 124);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .title {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(252, 249, 249);
   font-size: 24px;
   font-family: 'Orbitron', sans-serif; /* Futuristic font */
   margin-bottom: 20px;
@@ -61,7 +130,7 @@ body {
 }
 
 .btn {
-  background: #444;
+  background: #14c256;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -72,13 +141,50 @@ body {
 }
 
 .btn:hover {
-  background: #555;
+  color: rgb(131, 19, 103);
+  background: #0a0a0a;
 }
 
 #seek-bar {
   width: 100%;
   margin: 10px 0;
+  appearance: none;
+  height: 8px;
+  background: linear-gradient(to right, #14c256 0%, #08500c 100%);
+  border-radius: 4px;
+  transition: background 0.3s ease;
 }
+
+#seek-bar::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #f82ff0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#seek-bar::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #fff;
+}
+
+#seek-bar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #f82ff0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#seek-bar::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  background: #fff;
+}
+
 
 #current-time, #duration {
   font-size: 14px;
@@ -220,24 +326,37 @@ background-color:black;
 color:green;
 }
 
-aside {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: right;
-    align-items: center;
+#searchbar {
+  display: flex;
+  width: 80%;
+  padding: 16px;
+  margin: 16px auto;
+  font-size: 16px;
+  border: 2px solid rgb(129, 17, 124);
+  background-color: rgb(129, 17, 124);
+  color: black;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #14c256;
 }
 
-#search-bar {
-  width: 80%;
-  padding: 12px;
-  margin: 20px auto;
-  display: block;
-  font-size: 16px;
-  border: 2px solid #8a2be2;
-  background-color: #111;
-  color: #f82ff0;
+#searchbar:hover {
+  color: black;
   border-radius: 8px;
-  box-shadow: 0 0 10px #8a2be2;
+  background-color: #14c256;
+  box-shadow: 0 0 10px rgb(129, 17, 124);
+}
+
+#searchbar::placeholder {
+  color:black;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; 
+  gap: 10px;
+  width: 100%;
 }
 
 .spinner {
