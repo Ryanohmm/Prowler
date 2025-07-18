@@ -9,6 +9,7 @@ const md5 = crypto.createHash('md5');
 
 app.use(cors())
 
+
 app.get('/', (req, res) => {
     const string = getString();
     res.send(string);
@@ -18,6 +19,7 @@ app.get('/characters', async (req, res) => {
     const timestamp = Date.now().toString(); // ensure it's a string
     const publicKey = process.env.PUBLIC_ID;
     const privateKey = process.env.PRIVATE_ID;
+    const query = req.query.nameStartsWith;
 
     
     const hash = crypto
@@ -31,10 +33,15 @@ app.get('/characters', async (req, res) => {
         hash: hash
     });
 
-    const url = `https://gateway.marvel.com/v1/public/characters?${params.toString()}`;
-    console.log('🔍 Requesting:', url);
+    if (query) {
+    params.append('nameStartsWith', query);
+  }
+
+  const url = `https://gateway.marvel.com/v1/public/characters?${params.toString()}`;
+  console.log('🔍 Requesting:', url);
 
     try {
+        
         const apiResponse = await fetch(url);
         const json = await apiResponse.json();
 

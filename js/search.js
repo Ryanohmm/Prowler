@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // === Elements ===
+  // === DOM Elements ===
   const overlay = document.getElementById("activate-overlay");
   const introSound = document.getElementById("introSound");
   const music = document.getElementById("audio");
@@ -9,28 +9,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentTimeDisplay = document.getElementById("current-time");
   const durationDisplay = document.getElementById("duration");
   const searchInput = document.getElementById("searchbar");
+  const searchButton = document.getElementById("search-button");
+  const resetButton = document.getElementById("reset-button");
   const spinner = document.getElementById("loading-spinner");
   const characterContainer = document.getElementById("character-container");
-  const hoverSound = document.getElementById("hover-sound");
+  const suggestions = document.getElementById("suggestions");
+
+  let introCompleted = false;
+  let musicStarted = false;
+  let isSeeking = false;
 
   // === Format Time ===
-  function formatTime(seconds) {
+  const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-  }
+    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+  };
 
-  // === Music Metadata Loaded ===
+  // === Music Setup ===
   music.addEventListener("canplaythrough", () => {
     durationDisplay.textContent = formatTime(music.duration);
     seekBar.max = music.duration;
     seekBar.step = 0.1;
   }, { once: true });
 
-  // === Sync Time Display ===
-  let isSeeking = false;
-  seekBar.addEventListener("mousedown", () => isSeeking = true);
-  seekBar.addEventListener("mouseup", () => isSeeking = false);
+  seekBar.addEventListener("mousedown", () => (isSeeking = true));
+  seekBar.addEventListener("mouseup", () => (isSeeking = false));
   seekBar.addEventListener("input", () => {
     music.currentTime = seekBar.value;
   });
@@ -46,12 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === Glitch Intro Sequence ===
   overlay.addEventListener("click", () => {
-  overlay.style.display = "none";
-  glitchScreen.classList.add("active");
-
-  introSound.currentTime = 0;
-  introSound.play().catch(err => console.warn("Intro sound failed:", err));
-
+    overlay.style.display = "none";
+    glitchScreen.classList.add("active");
+    introSound.currentTime = 0;
+    introSound.play().catch((err) => console.warn("Intro sound failed:", err));
 
     setTimeout(() => {
       glitchScreen.style.animation = "fadeOut 1s ease forwards";
@@ -64,13 +66,17 @@ document.addEventListener("DOMContentLoaded", () => {
     introSound.addEventListener("ended", () => {
       setTimeout(() => {
         music.currentTime = 0;
-        music.play().catch(err => console.warn("Music playback failed:", err));
+        music.play().catch((err) => console.warn("Music playback failed:", err));
         playPauseBtn.textContent = "Pause";
+        introCompleted = true;
+        setTimeout(() => {
+          musicStarted = true;
+        }, 1500);
       }, 1000);
     }, { once: true });
   }, { once: true });
 
-  // === Music Player Controls ===
+  // === Music Controls ===
   playPauseBtn.addEventListener("click", () => {
     if (music.paused) {
       music.play();
@@ -81,83 +87,102 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === Character Fetching ===
-  let allCharacters = [];
+  // === Character Cards ===
+  const renderCharacters = (characters) => {
+    characterContainer.innerHTML = "";
+    characters.forEach((character) => {
+      const card = document.createElement("div");
+      card.className = "character-card";
 
-  async function fetchCharacters() {
-    spinner.classList.remove('hidden');
-    try {
-      const response = await fetch('http://localhost:3000/characters');
-      const data = await response.json();
-      allCharacters = data.data.results;
-      renderCharacters(allCharacters);
-    } catch (error) {
-      console.error('❌ Failed to fetch characters:', error);
-    } finally {
-      spinner.classList.add('hidden');
-    }
-  }
+      const cardInner = document.createElement("div");
+      cardInner.className = "character-card-inner";
 
-  function renderCharacters(characters) {
-    characterContainer.innerHTML = '';
-    characters.forEach(character => {
-      const card = document.createElement('div');
-      card.className = 'character-card';
-
-      const cardInner = document.createElement('div');
-      cardInner.className = 'character-card-inner';
-
-      const cardFront = document.createElement('div');
-      cardFront.className = 'character-card-front';
+      const cardFront = document.createElement("div");
+      cardFront.className = "character-card-front";
       cardFront.innerHTML = `
         <img src="${character.thumbnail.path}.${character.thumbnail.extension}" alt="${character.name}">
         <h3>${character.name}</h3>
       `;
 
-      const cardBack = document.createElement('div');
-      cardBack.className = 'character-card-back';
-      cardBack.textContent = `Bio: ${character.description || "No description available."}`;
+      const cardBack = document.createElement("div");
+      cardBack.className = "character-card-back";
+      cardBack.innerHTML = `
+        <p><strong>${character.name}</strong></p>
+        <p>${character.description || "No description available."}</p>
+        <p>Appears in ${character.comics.available} comics</p>
+      `;
 
       cardInner.appendChild(cardFront);
       cardInner.appendChild(cardBack);
       card.appendChild(cardInner);
 
-      card.addEventListener('click', () => {
-        card.classList.toggle('flipped');
-      });
-
-      card.addEventListener('mouseenter', () => {
-        hoverSound.currentTime = 0;
-        hoverSound.play();
+      card.addEventListener("click", () => {
+        card.classList.toggle("flipped");
       });
 
       characterContainer.appendChild(card);
     });
-  }
+  };
 
-  // === Search Filtering ===
-  if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      const query = e.target.value.toLowerCase();
-      const filtered = allCharacters.filter(char =>
-        char.name.toLowerCase().includes(query)
+  // === Autocomplete Suggestions Only ===
+  searchInput.addEventListener("input", (e) => {
+    const query = e.target.value.trim().toLowerCase();
+    if (!introCompleted || !musicStarted || !query) return;
+
+    fetch(`http://localhost:3000/characters?nameStartsWith=${query}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const results = data?.data?.results || [];
+        suggestions.innerHTML = "";
+        results.slice(0, 5).forEach((char) => {
+          const li = document.createElement("li");
+          li.textContent = char.name;
+          li.addEventListener("click", () => {
+            searchInput.value = char.name;
+            suggestions.innerHTML = "";
+          });
+          suggestions.appendChild(li);
+        });
+      })
+      .catch((err) => console.warn("Autocomplete fetch failed:", err));
+  });
+
+  // === Search Button Triggers Results ===
+  const handleSearch = async (query) => {
+    if (!introCompleted || !musicStarted || !query) return;
+    spinner.classList.remove("hidden");
+
+    try {
+      const response = await fetch(
+        `http://localhost:3000/characters?nameStartsWith=${query}`
       );
-      renderCharacters(filtered);
-    });
-  } else {
-    console.warn("Search input not found.");
-  }
+      const data = await response.json();
+      const results = data?.data?.results || [];
 
-  const resetButton = document.getElementById("reset-button");
+      if (results.length > 0) {
+        renderCharacters(results);
+        suggestions.innerHTML = "";
+      } else {
+        characterContainer.innerHTML = "<p>No match found.</p>";
+      }
+    } catch (err) {
+      console.warn("Search failed:", err);
+      characterContainer.innerHTML = "<p>Search error. Try again later.</p>";
+    } finally {
+      spinner.classList.add("hidden");
+    }
+  };
 
-resetButton.addEventListener("click", () => {
-  searchInput.value = "";
-  characterContainer.innerHTML = ""; // Clear the board
-});
+  searchButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    const query = searchInput.value.trim().toLowerCase();
+    handleSearch(query);
+  });
 
-
-
-
-  // === Init Character Fetch ===
-  fetchCharacters();
+  // === Reset ===
+  resetButton.addEventListener("click", () => {
+    searchInput.value = "";
+    characterContainer.innerHTML = "";
+    suggestions.innerHTML = "";
+  });
 });

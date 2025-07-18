@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    const gifElements = document.querySelectorAll('img[data-static][data-animated]');
+
+  gifElements.forEach(gif => {
+    gif.addEventListener('click', () => {
+      const isAnimated = gif.src.includes(gif.dataset.animated);
+      gif.src = isAnimated ? gif.dataset.static : gif.dataset.animated;
+    });
+  });
+  // ===
   // === Elements ===
   const overlay = document.getElementById("activate-overlay");
   const introSound = document.getElementById("introSound");
@@ -107,3 +117,4 @@ document.addEventListener("DOMContentLoaded", () => {
     cardDescription.textContent = "";
   });
 });
+
