@@ -1,12 +1,92 @@
-const loginCredentials = "Spider-man";
-const loginPassword = "Jefferson";
-
 document.addEventListener("DOMContentLoaded", function () {
+  const loginCredentials = "Spider-man";
+  const loginPassword = "Jefferson";
   const form = document.getElementById("prowler-form");
   const usernameInput = document.getElementById("username");
   const passwordInput = document.getElementById("password");
   const usernameError = document.getElementById("username-error");
   const passwordError = document.getElementById("password-error");
+  const overlay = document.getElementById("activate-overlay");
+  const introSound = document.getElementById("introSound");
+  const music = document.getElementById("audio");
+  const glitchScreen = document.getElementById("intro-screen");
+  const playPauseBtn = document.getElementById("play-pause");
+  const seekBar = document.getElementById("seek-bar");
+  const currentTimeDisplay = document.getElementById("current-time");
+  const durationDisplay = document.getElementById("duration");
+
+
+  let introCompleted = false;
+  let musicStarted = false;
+  let isSeeking = false;
+
+  // === Format Time ===
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+  };
+
+  // === Music Setup ===
+  music.addEventListener("canplaythrough", () => {
+    durationDisplay.textContent = formatTime(music.duration);
+    seekBar.max = music.duration;
+    seekBar.step = 0.1;
+  }, { once: true });
+
+  seekBar.addEventListener("mousedown", () => (isSeeking = true));
+  seekBar.addEventListener("mouseup", () => (isSeeking = false));
+  seekBar.addEventListener("input", () => {
+    music.currentTime = seekBar.value;
+  });
+
+  music.addEventListener("timeupdate", () => {
+    if (!isSeeking) {
+      currentTimeDisplay.textContent = formatTime(music.currentTime);
+      seekBar.value = music.currentTime;
+      const percent = (music.currentTime / music.duration) * 100;
+      seekBar.style.background = `linear-gradient(to right, #14c256 ${percent}%, #08500c ${percent}%)`;
+    }
+  });
+
+  // === Glitch Intro Sequence ===
+  overlay.addEventListener("click", () => {
+    overlay.style.display = "none";
+    glitchScreen.classList.add("active");
+    introSound.currentTime = 0;
+    introSound.play().catch((err) => console.warn("Intro sound failed:", err));
+
+    setTimeout(() => {
+      glitchScreen.style.animation = "fadeOut 1s ease forwards";
+    }, 4000);
+
+    setTimeout(() => {
+      glitchScreen.style.display = "none";
+    }, 5000);
+
+    introSound.addEventListener("ended", () => {
+      setTimeout(() => {
+        music.currentTime = 0;
+        music.play().catch((err) => console.warn("Music playback failed:", err));
+        playPauseBtn.textContent = "Pause";
+        introCompleted = true;
+        setTimeout(() => {
+          musicStarted = true;
+        }, 1500);
+      }, 1000);
+    }, { once: true });
+  }, { once: true });
+
+  // === Music Controls ===
+  playPauseBtn.addEventListener("click", () => {
+    if (music.paused) {
+      music.play();
+      playPauseBtn.textContent = "Pause";
+    } else {
+      music.pause();
+      playPauseBtn.textContent = "Play";
+    }
+  });
 
   let failedAttempts = parseInt(localStorage.getItem("failedAttempts")) || 0;
 
@@ -28,6 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
+     usernameError.classList.add("show");
+     passwordError.classList.add("show");
 
     console.log("Submitted Username:", username);
     console.log("Submitted Password:", password);

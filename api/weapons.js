@@ -1,37 +1,63 @@
-require('dotenv').config();
-const http = require('http');
-const httpProxy = require('http-proxy');
-const fetch = require('node-fetch');
-const md5 = require('blueimp-md5'); // Install this if needed
+const express = require('express')
+const app = express()
+const cors = require('cors')
+const port = 3000
+const crypto = require('crypto');
+require('dotenv').config()
 
-const publicKey = process.env.PUBLIC_KEY;
-const privateKey = process.env.PRIVATE_KEY;
+const md5 = crypto.createHash('md5');
 
-const proxy = httpProxy.createProxyServer({});
+app.use(cors())
 
-proxy.on('error', (err, req, res) => {
-  console.error('Proxy error:', err.message);
-  res.writeHead(502, { 'Content-Type': 'text/plain' });
-  res.end('Bad Gateway: Proxy server error.');
-});
 
-http.createServer(async (req, res) => {
-  const urlParams = new URLSearchParams(req.url.replace('/', ''));
-  const query = urlParams.get('query') || 'spider';
+app.get('/', (req, res) => {
+    const string = getString();
+    res.send(string);
+})
 
-  const ts = Date.now();
-  const hash = md5(ts + privateKey + publicKey);
-  const marvelUrl = `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+app.get('/series', async (req, res) => {
+    const timestamp = Date.now().toString(); // ensure it's a string
+    const publicKey = process.env.PUBLIC_ID;
+    const privateKey = process.env.PRIVATE_ID;
+    const query = req.query.nameStartsWith;
 
-  try {
-    const response = await fetch(marvelUrl);
-    const data = await response.json();
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(data));
-  } catch (err) {
-    res.writeHead(500, { 'Content-Type': 'text/plain' });
-    res.end('Error fetching from Marvel API');
+    
+    const hash = crypto
+        .createHash('md5')
+        .update(timestamp + privateKey + publicKey)
+        .digest('hex');
+
+    const params = new URLSearchParams({
+        ts: timestamp,
+        apikey: publicKey,
+        hash: hash
+    });
+
+    if (query) {
+    params.append('nameStartsWith', query);
   }
-}).listen(3000, () => {
-  console.log('Proxy server running on http://localhost:3000');
+
+  const url = `https://gateway.marvel.com/v1/public/series?${params.toString()}`;
+  console.log('🔍 Requesting:', url);
+
+    try {
+        
+        const apiResponse = await fetch(url);
+        const json = await apiResponse.json();
+
+        console.log('✅ Response received:', JSON.stringify(json, null, 2));
+        res.setHeader('Content-Type', 'application/json');
+        res.send(json);
+    } catch (e) {
+        console.error('❌ Error fetching Marvel API:', e);
+        res.status(500).send({ error: 'Failed to fetch Marvel data' });
+    }
 });
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
+function getString() {
+    return 'Welcome, Miles!';
+}

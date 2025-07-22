@@ -63,15 +63,21 @@ header {
 }
 
 .music-player {
+  margin: 32px;
+  padding: 32px;
   text-align: center;
-  background: rgb(77, 7, 65);
+  background: rgb(129, 17, 124);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .title {
-  background-color: rgb(248, 252, 248);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(252, 249, 249);
   font-size: 24px;
   font-family: 'Orbitron', sans-serif; /* Futuristic font */
   margin-bottom: 20px;
@@ -84,7 +90,7 @@ header {
 }
 
 .btn {
-  background: rgb(110, 9, 85);
+  background: #14c256;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -95,13 +101,50 @@ header {
 }
 
 .btn:hover {
-  background: #555;
+  color: rgb(131, 19, 103);
+  background: #0a0a0a;
 }
 
 #seek-bar {
   width: 100%;
   margin: 10px 0;
+  appearance: none;
+  height: 8px;
+  background: linear-gradient(to right, #14c256 0%, #08500c 100%);
+  border-radius: 4px;
+  transition: background 0.3s ease;
 }
+
+#seek-bar::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #f82ff0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#seek-bar::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #fff;
+}
+
+#seek-bar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #f82ff0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#seek-bar::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  background: #fff;
+}
+
 
 #current-time, #duration {
   font-size: 14px;
@@ -208,6 +251,31 @@ ul li {
   padding-left: 24px;
   margin-bottom: 8px;
 }
+
+#activate-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  color: lime;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  z-index: 9999;
+  cursor: pointer;
+  box-shadow: 0 4px 15px purple;
+}
+
+
+#activate-overlay:hover {
+  color: purple;
+  border: solid purple;
+  box-shadow: 0 4px 15px lime;
+}
+
 .glitch-screen {
   position: fixed;
   top: 0;
@@ -219,7 +287,7 @@ ul li {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 9998;
   animation: fadeOut 2s ease 2s forwards;
 }
 
@@ -252,7 +320,6 @@ ul li {
   animation: glitch 0.15s steps(2, end) infinite;
   filter: hue-rotate(20deg) contrast(1.2);
 }
-
 
 footer{
  display: flex; 
