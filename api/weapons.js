@@ -37,7 +37,7 @@ app.get('/series', async (req, res) => {
     params.append('nameStartsWith', query);
   }
 
-  const url = `https://gateway.marvel.com/v1/public/series?${params.toString()}`;
+  const url = `https://gateway.marvel.com/v1/public/events?${params.toString()}`;
   console.log('🔍 Requesting:', url);
 
     try {

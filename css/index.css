@@ -28,8 +28,6 @@ header {
  padding: 25px;
 }
 
-
-
 #activate-overlay {
   position: fixed;
   top: 0;
@@ -44,14 +42,13 @@ header {
   font-size: 2rem;
   z-index: 9999;
   cursor: pointer;
-  box-shadow: 0 4px 15px purple;
+  box-shadow: 0 0.25em 1em purple;
 }
-
 
 #activate-overlay:hover {
   color: purple;
-  border: solid purple;
-  box-shadow: 0 4px 15px lime;
+  border: 0.1em solid purple;
+  box-shadow: 0 0.25em 1em lime;
 }
 
 .glitch-screen {
@@ -73,17 +70,16 @@ header {
   font-size: 3rem;
   font-family: 'Orbitron', sans-serif;
   animation: glitch 0.3s infinite;
-  text-shadow: 2px 2px red, -2px -2px blue;
+  text-shadow: 0.125em 0.125em red, -0.125em -0.125em blue;
 }
+
 
 @keyframes fadeOut {
   to {
     opacity: 0;
     visibility: hidden;
-    display: none;
   }
 }
-
 
 @keyframes glitch {
   0% { transform: translate(0); }
@@ -104,8 +100,8 @@ header {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 50px;
-  padding: 30px;
+  margin: 2.5em;
+  padding: 2em;
   color: rgb(187, 29, 192);
   border: solid rgb(241, 239, 241);
 }
@@ -113,30 +109,23 @@ header {
 input[type="text"],
 input[type="password"],
 button {
-  margin: 30px;
-  padding: 15px;
+  margin: 1em;
+  padding: 0.75em;
   color: rgb(156, 22, 156);
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  font-size: 16px;
+  border: 0.125em solid black;
+  border-radius: 0.02em;
+  font-size: 1.3em;
+  box-shadow: 0 0.25em 0.5em rgb(156, 22, 156);
 }
 
 input[type="text"]::placeholder,
 input[type="password"]::placeholder {
-  color: rgb(193, 29, 199);
+  color: black;
 }
 
-
-input:invalid {
-  border: 2px solid red;
-}
-
-input:valid {
-  border: 2px solid black;
-}
 
 .error-message {
-  display: block;
+  display: flex;
   color: #f82ff0;
   font-size: 0.9rem;
   padding-top: 4px;
@@ -174,22 +163,23 @@ div {
 
 
 button {
-            padding: 15px 30px;
-            background-color: #14c256;
-            color: black;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            
-        }
-        button:hover {
-            background-color: rgb(68, 7, 65);
-            transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          
-        }
+  padding: 0.9375rem 1.875rem; 
+  background-color: #14c256;
+  color: black;
+  border: solid white;
+  border-radius: 0.5em; 
+  font-size: 1em; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0.25em 0.5em rgb(156, 22, 156); 
+}
+
+button:hover {
+  background-color: rgb(156, 22, 156);
+  border: solid white;
+  transform: scale(1.1);
+  box-shadow: 0 0.25em 0.5em #14c256; 
+}
 
         promo {
             display: flex;
@@ -209,53 +199,91 @@ button {
   }
 }
 
-.music-player body {
+.layout-container {
+  display: flex;
+  justify-content: center;
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, rgb(5, 105, 5), rgb(138, 13, 138));
+  background: linear-gradient(rgb(15, 88, 9), rgb(129, 17, 124));
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 50%;
 }
 
 .music-player {
-  margin: 32px;
-  padding: 32px;
+  margin: 1.5em;
+  padding: 1.5em;
   text-align: center;
   background: rgb(129, 17, 124);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 0.625rem;
+  border: solid white;
+  box-shadow: 0 0.25em 1em white;
+}
+
+.music-player:hover {
+  margin: 1.5em;
+  padding: 1.5em;
+  text-align: center;
+  background: rgb(15, 88, 9);
+  border-radius: 0.625rem;
+  border: solid white;
+  box-shadow: 0 0.25em 1em black;
 }
 
 .title {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: rgb(252, 249, 249);
-  font-size: 24px;
-  font-family: 'Orbitron', sans-serif; /* Futuristic font */
-  margin-bottom: 20px;
+  color: black;
+  font-size: 1.5em;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 1em;
+  margin: 1em;
+  padding: 1em;
+}
+
+.title:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 1em;
+  margin: 1em;
+  padding: 1em;
 }
 
 .controls {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 1em;
+  padding: 1em;
+}
+
+.controls:hover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em;
+  padding: 1em;
 }
 
 .btn {
   background: #14c256;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+  padding: 0.625rem 1.25rem;
+  margin-bottom: 0.625rem;
+  border-radius: 0.3125rem;
   cursor: pointer;
   transition: background 0.3s;
+  font-size: 1rem;
 }
 
 .btn:hover {
@@ -265,18 +293,39 @@ button {
 
 #seek-bar {
   width: 100%;
-  margin: 10px 0;
+  margin: 0.625rem 0;
   appearance: none;
-  height: 8px;
+  height: 0.5rem;
   background: linear-gradient(to right, #14c256 0%, #08500c 100%);
-  border-radius: 4px;
+  border-radius: 0.25rem;
   transition: background 0.3s ease;
 }
 
 #seek-bar::-webkit-slider-thumb {
   appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
+  background: #f82ff0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+
+#seek-bar {
+  width: 100%;
+  margin: 1em 0; 
+  appearance: none;
+  height: 0.5rem; 
+  background: linear-gradient(to right, #14c256 0%, #08500c 100%);
+  border-radius: 0.25em; 
+  transition: background 0.3s ease;
+}
+
+#seek-bar::-webkit-slider-thumb {
+  appearance: none;
+  width: 1em; 
+  height: 1em;
   background: #f82ff0;
   border-radius: 50%;
   cursor: pointer;
@@ -289,8 +338,8 @@ button {
 }
 
 #seek-bar::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
+  width: 1em;
+  height: 1em;
   background: #f82ff0;
   border: none;
   border-radius: 50%;
@@ -303,7 +352,7 @@ button {
   background: #fff;
 }
 
-
-#current-time, #duration {
-  font-size: 14px;
+#current-time,
+#duration {
+  font-size: 0.875em; 
 }

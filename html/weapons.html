@@ -8,6 +8,7 @@
     <title>Weapons Cache</title>
 </head>
 
+<body>
 <header>
     <nav class="menu-wrapper">
    <input type="checkbox" id="menu-toggle" aria-label="Toggle-menu">
@@ -24,8 +25,6 @@
     </nav>
  
 </header>
-
-<body>
 
    <div id="activate-overlay" class="overlay">
   <h2>Click to Activate Terminal</h2>
@@ -53,9 +52,7 @@
   </div>
 </aside>
 
-
-</main> 
-<footer>
+	<section>
   <div class="layout-container">
     <div class="music-player">
     <h1 class="title">Prowler Music Player</h1>
@@ -85,7 +82,7 @@
 					</button>
 				</div>
 				<div id="reminder-section">
-					<h3>Reminders</h3>
+					<h3>Upcoming Events</h3>
 					<!-- List to display reminders -->
 					<ul id="reminderList">
 						<li data-event-id="1">
@@ -102,10 +99,10 @@
 			<div id="right">
 				<h3 id="monthAndYear"></h3>
 				<div class="button-container-calendar">
-					<button id="previous" type="button" aria-label="previous button"
+					<button id="previous-month" type="button" aria-label="previous button"
 							onclick="previous()">
 					</button>
-					<button id="next" type="button"
+					<button id="next-month" type="button"
 							onclick="next()">
 						›
 					</button>
@@ -118,7 +115,7 @@
 					<tbody id="calendar-body"></tbody>
 				</table>
 				<div class="footer-container-calendar">
-					<label for="month">Jump To: </label>
+					<label for="month">Select Future Date </label>
 					<!-- Dropdowns to select a specific month and year -->
 					<select id="month" onchange="jump()">
 						<option value=0>Jan</option>
@@ -140,8 +137,11 @@
 			</div>
 		</div>
 	</div>
-        
+    </section>
 <img id="gif" class="image" src="../img/milesgesture.gif" alt="miles gesticulating wildly" data-static="../img/prowler.jpg" data-animated="../img/milesgesture.gif" width="400" height="300">
+</main> 
+<footer>
+
 </footer>
    
 <script src="../js/weapons.js"></script>  

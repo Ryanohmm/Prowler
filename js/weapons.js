@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/series?nameStartsWith=${query}`
+        `http://localhost:3000/events?nameStartsWith=${query}`
       );
       const data = await response.json();
       const results = data?.data?.results || [];
