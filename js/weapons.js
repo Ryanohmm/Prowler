@@ -189,14 +189,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let events = [];
 
 // letiables to store event input fields and reminder list
-let eventDateInput =
-	document.getElementById("eventDate");
-let eventTitleInput =
-	document.getElementById("eventTitle");
-let eventDescriptionInput =
-	document.getElementById("eventDescription");
-let reminderList =
-	document.getElementById("reminderList");
+let eventDateInput = document.getElementById("eventDate");
+let eventTitleInput = document.getElementById("eventTitle");
+let eventDescriptionInput = document.getElementById("eventDescription");
+let reminderList = document.getElementById("reminderList");
 
 // Counter to generate unique event IDs
 let eventIdCounter = 1;
