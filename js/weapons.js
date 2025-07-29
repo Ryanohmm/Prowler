@@ -8,12 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const seekBar = document.getElementById("seek-bar");
   const currentTimeDisplay = document.getElementById("current-time");
   const durationDisplay = document.getElementById("duration");
-  const searchInput = document.getElementById("searchbar");
-  const searchButton = document.getElementById("search-button");
-  const resetButton = document.getElementById("reset-button");
-  const spinner = document.getElementById("loading-spinner");
-  const characterContainer = document.getElementById("character-container");
-  const suggestions = document.getElementById("suggestions");
 
   let introCompleted = false;
   let musicStarted = false;
@@ -87,104 +81,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === Character Cards ===
-  const renderSeries = (series) => {
-    characterContainer.innerHTML = "";
-    series.forEach((series) => {
-      const card = document.createElement("div");
-      card.className = "character-card";
+  let deadline = new Date("June 25, 2027 00:00").getTime();
 
-      const cardInner = document.createElement("div");
-      cardInner.className = "character-card-inner";
+// Calling defined function at certain interval
+let x = setInterval(function () {
+  // Getting current date and time in required format
+  let now = new Date().getTime();
 
-      const cardFront = document.createElement("div");
-      cardFront.className = "character-card-front";
-      cardFront.innerHTML = `
-        <img src="${series.thumbnail.path}.${series.thumbnail.extension}" alt="${series.title}">
-        <h3>${series.title}</h3>
-      `;
+  // Calculating difference
+  let t = deadline - now;
 
-      const cardBack = document.createElement("div");
-      cardBack.className = "character-card-back";
-      cardBack.innerHTML = `
-        <p><strong>${series.title}</strong></p>
-        <p>${series.description || "No description available."}</p>
-        <p>Appears in ${series.comics.available} comics</p>
-      `;
+  // Getting values of days,hours,minutes, seconds
+  let days = Math.floor(t / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((t % (1000 * 60)) / 1000);
 
-      cardInner.appendChild(cardFront);
-      cardInner.appendChild(cardBack);
-      card.appendChild(cardInner);
+  // Show the output time
+  document.getElementById("day").innerHTML = days;
+  document.getElementById("hour").innerHTML = hours;
+  document.getElementById("minute").innerHTML = minutes;
+  document.getElementById("second").innerHTML = seconds;
 
-      card.addEventListener("click", () => {
-        card.classList.toggle("flipped");
-      });
-
-      characterContainer.appendChild(card);
-    });
-  };
-
-  // === Autocomplete Suggestions Only ===
-  searchInput.addEventListener("input", (e) => {
-    const query = e.target.value.trim().toLowerCase();
-    if (!introCompleted || !musicStarted || !query) return;
-
-    fetch(`http://localhost:3000/series?nameStartsWith=${query}`)
-      .then((res) => res.json())
-      .then((data) => {
-        const results = data?.data?.results || [];
-        suggestions.innerHTML = "";
-        results.slice(0, 5).forEach((char) => {
-          const li = document.createElement("li");
-          li.textContent = char.title;
-          li.addEventListener("click", () => {
-            searchInput.value = char.title;
-            suggestions.innerHTML = "";
-          });
-          suggestions.appendChild(li);
-        });
-      })
-      .catch((err) => console.warn("Autocomplete fetch failed:", err));
-  });
-
-  // === Search Button Triggers Results ===
-  const handleSearch = async (query) => {
-    if (!introCompleted || !musicStarted || !query) return;
-    spinner.classList.remove("hidden");
-
-    try {
-      const response = await fetch(
-        `http://localhost:3000/events?nameStartsWith=${query}`
-      );
-      const data = await response.json();
-      const results = data?.data?.results || [];
-
-      if (results.length > 0) {
-        renderSeries(results);
-        suggestions.innerHTML = "";
-      } else {
-        characterContainer.innerHTML = "<p>No match found.</p>";
-      }
-    } catch (err) {
-      console.warn("Search failed:", err);
-      characterContainer.innerHTML = "<p>Search error. Try again later.</p>";
-    } finally {
-      spinner.classList.add("hidden");
-    }
-  };
-
-  searchButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    const query = searchInput.value.trim().toLowerCase();
-    handleSearch(query);
-  });
-
-  // === Reset ===
-  resetButton.addEventListener("click", () => {
-    searchInput.value = "";
-    characterContainer.innerHTML = "";
-    suggestions.innerHTML = "";
-  });
+  // Show overtime output
+  if (t < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "TIME UP";
+    document.getElementById("day").innerHTML = "0";
+    document.getElementById("hour").innerHTML = "0";
+    document.getElementById("minute").innerHTML = "0";
+    document.getElementById("second").innerHTML = "0";
+  }
+}, 1000);
 
   let events = [];
 
@@ -290,6 +218,7 @@ document.getElementById("year").innerHTML = createYear;
 
 let calendar = document.getElementById("calendar");
 
+
 let months = [
 	"January",
 	"February",
@@ -318,8 +247,7 @@ $dataHead += "</tr>";
 
 document.getElementById("thead-month").innerHTML = $dataHead;
 
-monthAndYear =
-	document.getElementById("monthAndYear");
+monthAndYear = document.getElementById("monthAndYear");
 showCalendar(currentMonth, currentYear);
 
 // Function to navigate to the next month
@@ -329,7 +257,8 @@ function next() {
 	currentMonth = (currentMonth + 1) % 12;
 	showCalendar(currentMonth, currentYear);
 }
-
+ document.getElementById("next-month").addEventListener("click", next);  
+ 
 // Function to navigate to the previous month
 function previous() {
 	currentYear = currentMonth === 0 ?
@@ -339,12 +268,16 @@ function previous() {
 	showCalendar(currentMonth, currentYear);
 }
 
+document.getElementById("previous-month").addEventListener("click", previous);
+
 // Function to jump to a specific month and year
 function jump() {
 	currentYear = parseInt(selectYear.value);
 	currentMonth = parseInt(selectMonth.value);
 	showCalendar(currentMonth, currentYear);
 }
+
+document.getElementById("month").addEventListener("click", jump);
 
 // Function to display the calendar
 function showCalendar(month, year) {

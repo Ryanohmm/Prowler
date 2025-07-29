@@ -340,13 +340,13 @@ header {
 
 .dropdown-menu {
   position: absolute;
-  top: 3.75rem; /* 60px */
+  top: 3.75em; 
   left: 50%;
-  width: 12.5rem; /* 200px */
+  width: 12.5em; 
   background-color: rgb(17, 2, 2);
   border: 0.125rem solid rgb(155, 17, 155);
-  box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
+  box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.1);
+  border-radius: 0.5em;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-1.25rem);
@@ -357,180 +357,74 @@ header {
 ul li {
   list-style: none;
   display: flex;
-  border: 0.125rem solid rgb(8, 66, 18);
+  border: 0.125em solid rgb(8, 66, 18);
   color: rgb(185, 25, 190);
-  padding-left: 1.5rem; 
-  margin-bottom: 0.5rem; 
-  font-size: 1rem;
+  padding-left: 1.5em; 
+  margin-bottom: 0.5em; 
+  font-size: 1em;
 }
 
-button {
-  padding: 0.9375rem 1.875rem; /* 15px 30px */
-  background-color: #14c256;
-  color: black;
-  border: none;
-  border-radius: 0.5rem; /* 8px */
-  font-size: 1rem; /* 16px */
-  cursor: pointer;
-  transition: all 0.3s ease;
+#clockdivh1 {
+    border: solid white;
+    color: black;
+    height: 50%;
+    width: 50%;
+    text-decoration: wavy;
+    text-align: center;
+    font-weight: 100;
+    font-size: 3em;
 }
-
-button:hover {
-  background-color: rgb(68, 7, 65);
-  transform: scale(1.1);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2); /* 4px 8px */
-}
-
 
 h1 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-decoration: none;
-  border: solid white;
-  color: rgb(90, 14, 109);
-  font-size: 1.5rem;
-  margin: 1rem;
+  text-align: center;
 }
 
-h1:hover {
-  text-decoration: underline;
-  background-color: black;
-  color: green;
-}
-
-#searchbar {
-  display: flex;
-  width: 80%;
-  padding: 1rem;
-  margin: 1rem auto;
-  font-size: 1rem;
-  border: 0.125rem solid #14c256;
-  background-color: rgb(129, 17, 124);
-  color: black;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 0.625rem #14c256;
-}
-
-#searchbar:hover {
-  background-color: #14c256;
-  box-shadow: 0 0 0.625rem rgb(129, 17, 124);
-}
-
-#searchbar::placeholder {
-  color: black;
-}
-
-.autocomplete-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  background: black;
-  color: lime;
-  border: 0.0625rem solid lime;
-  max-height: 9.375rem; /* 150px */
-  overflow-y: auto;
-  position: absolute;
-  z-index: 1000;
-  font-size: 1rem;
-}
-
-.autocomplete-list li {
-  padding: 0.5rem;
-  cursor: pointer;
-}
-
-.autocomplete-list li:hover {
-  background-color: purple;
-  color: white;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
+#clockdiv {
+    display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 0.625rem; /* 10px */
-  width: 100%;
-  padding: 1rem;
+  gap: 1em;
+
+  width: 100%; 
+  max-width: 30em; 
+  margin: 1em auto; 
+  padding: 0.5em;
+
+  font-family: sans-serif;
+  font-size: 1.5em;
+  font-weight: 100;
+  color: black;
+  text-align: center;
+
+  border: 0.1em solid white;
+  box-shadow: 0em 0.08em 0em 0.08em white;
 }
 
-.spinner {
-  border: 0.375rem solid #222; 
-  border-top: 0.375rem solid #f82ff0;
-  border-radius: 50%;
-  width: 3.125rem; /* 50px */
-  height: 3.125rem;
-  animation: spin 1s linear infinite;
-  margin: 1.25rem auto; /* 20px */
-}
-
-.hidden {
-  display: none;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-
-.character-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(11.25rem, 1fr)); /* 180px */
-  gap: 1.25em; 
-  padding: 1.875em; 
-}
-
-.character-card {
-  perspective: 62.5em; 
-  width: 12.5em;
-  height: 18.75em; 
-  cursor: pointer;
-}
-
-.character-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-
-.character-card.flipped .character-card-inner {
-  transform: rotateY(180deg);
-}
-
-.character-card-front,
-.character-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 0.5rem; /* 8px */
-  overflow-y: auto;
-}
-
-.character-card-front img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.character-card-back {
-  background-color: #111;
-  color: #fff;
-  transform: rotateY(180deg);
-  padding: 1rem;
-  box-sizing: border-box;
+#prowler-countdown  {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  overflow-y: auto;
+  align-items: center;
+  margin-bottom: 2em;
 }
 
-.hidden {
-  display: none;
+#clockdiv>div {
+    padding: 0.6em;
+    border-radius: 0.125em;
+    background: rgb(129, 17, 124);
+    display: inline-block;
+}
+
+#clockdiv div>span {
+    padding: 0.8em;
+    border-radius: 0.125em;
+    background: rgb(9, 133, 9);
+    display: inline-block;
+}
+
+
+.smalltext {
+    padding-top: 0.6em;
+    font-size: 1em;
 }
 
 footer {
@@ -540,37 +434,12 @@ footer {
   font-size: 1rem;
 }
 
-.promo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgb(187, 154, 187);
-  color: rgb(5, 5, 5);
-  padding: 1rem;
-  font-size: 1rem;
-  border-radius: 0.5rem;
-  margin: 1rem;
-}
-
-.promo:hover {
-  background: black;
-  color: rgb(187, 29, 192);
-}
-#gif {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      cursor: pointer;
-      margin: 1em;
-      padding: 1em;
-    }
-
 #gif1 {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+      flex-wrap: wrap;
       cursor: pointer;
-      cursor: pointer;
+      height: 10em;
+      width: 10em;
       margin: 1em;
       padding: 1em;
     }
@@ -668,8 +537,8 @@ footer {
 .event-marker::after {
 	content: '';
 	display: block;
-	width: 6px;
-	height: 6px;
+	width: 0.3em;
+	height: 0.3em;
 	background-color: purple;
 	border-radius: 50%;
 	position: absolute;
@@ -697,7 +566,7 @@ footer {
 	display: block;
 }
 
-/* Reminder section styling */
+
 #reminder-section {
 	padding: 0.3em;
 	background: rgb(129, 17, 124);
@@ -722,7 +591,7 @@ footer {
   color: black;
 }
 
-/* Style for the delete buttons */
+
 .delete-event {
 	background: rgb(12, 107, 20);
 	color: white;
@@ -733,14 +602,21 @@ footer {
 	align-items: right;
 }
 
-/* Buttons in the calendar */
 .button-container-calendar button {
 	cursor: pointer;
 	background: rgb(129, 17, 124);
-	color: #fff;
+	color: white;
 	border: 0.125em solid white;
 	border-radius: 0.125em;
-	padding: 0.17 0.2em;
+  height: 3em;
+  width: 3em;
+  margin: 0.3em;
+	padding: 0.2em;
+}
+
+.button-container-calendar button:hover {
+  background: rgb(12, 107, 20);
+  color: black;
 }
 
 /* Calendar table */
@@ -802,11 +678,11 @@ footer {
 	clear: both;
 }
 
-#previous {
+#previous-month {
 	float: left;
 }
 
-#next {
+#next-month {
 	float: right;
 }
 
@@ -914,57 +790,6 @@ footer {
     font-size: 1.125rem;
   }
 
-  button {
-    padding: 1rem 2rem;
-    font-size: 1.125rem;
-  }
-
-  h1 {
-    font-size: 2rem;
-    margin: 1.5rem;
-  }
-
-  #searchbar {
-    width: 60%;
-    padding: 1.25rem;
-    font-size: 1.125rem;
-  }
-
-  .autocomplete-list {
-    font-size: 1.125rem;
-  }
-
-  .autocomplete-list li {
-    padding: 0.75rem;
-  }
-
- .wrapper {
-    gap: 1rem;
-    padding: 2rem;
-  }
-
-  .spinner {
-    width: 4rem;
-    height: 4rem;
-    border-width: 0.5rem;
-  }
-
-  .character-grid {
-    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); /* 208px */
-    gap: 1.5rem;
-    padding: 2.5rem;
-  }
-
-  .character-card {
-    width: 14rem; /* 224px */
-    height: 20rem; /* 320px */
-  }
-
-  .character-card-back {
-    padding: 1.25rem;
-  }
-}
-
 footer {
     padding: 1.5rem;
     font-size: 1.125rem;
@@ -981,4 +806,6 @@ footer {
     transform: rotate(360deg);
   }
 }  
+
+  }
 }
