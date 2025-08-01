@@ -106,7 +106,7 @@ let x = setInterval(function () {
   // Show overtime output
   if (t < 0) {
     clearInterval(x);
-    document.getElementById("countdown").innerHTML = "TIME UP";
+    document.getElementById("countdown").innerHTML = document.getElementById("calendar").scrollIntoView({ behavior: "smooth" });
     document.getElementById("day").innerHTML = "0";
     document.getElementById("hour").innerHTML = "0";
     document.getElementById("minute").innerHTML = "0";

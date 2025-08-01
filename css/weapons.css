@@ -73,7 +73,7 @@ header {
 }
 
 .glitch-text {
-  font-size: 3rem;
+  font-size: 3em;
   font-family: 'Orbitron', sans-serif;
   animation: glitch 0.3s infinite;
   text-shadow: 0.125em 0.125em red, -0.125em -0.125em blue;
@@ -183,7 +183,7 @@ header {
   margin: 0.625rem 0;
   appearance: none;
   height: 0.5rem;
-  background: linear-gradient(to right, #14c256 0%, #08500c 100%);
+  background: linear-gradient(to right, #14c256 0%, rgb(9, 133, 9) 100%);
   border-radius: 0.25rem;
   transition: background 0.3s ease;
 }
@@ -204,7 +204,7 @@ header {
   margin: 1em 0; 
   appearance: none;
   height: 0.5rem; 
-  background: linear-gradient(to right, #14c256 0%, #08500c 100%);
+  background: linear-gradient(to right, #14c256 0%, rgb(9, 133, 9) 100%);
   border-radius: 0.25em; 
   transition: background 0.3s ease;
 }
@@ -256,8 +256,8 @@ header {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 1.875rem; /* 30px */
-  height: 0.1875rem; /* 3px */
+  width: 1.875em; 
+  height: 0.1875em; 
   background-color: black;
   transition: all 0.3s ease-in-out;
 }
@@ -266,18 +266,18 @@ header {
 .menu-icon::after {
   content: '';
   position: absolute;
-  width: 1.875rem;
-  height: 0.1875rem;
+  width: 1.875em;
+  height: 0.1875em;
   background-color: black;
   transition: all 0.3s ease-in-out;
 }
 
 .menu-icon::before {
-  transform: translateY(-0.625rem); /* -10px */
+  transform: translateY(-0.625em);
 }
 
 .menu-icon::after {
-  transform: translateY(0.625rem); /* 10px */
+  transform: translateY(0.625em); 
 }
 
 #menu-toggle {
@@ -300,16 +300,16 @@ header {
 
  .dropdown-menu {
   position: absolute;
-  top: 3.75rem; /* 60px */
+  top: 3.75em; 
   left: 50%;
-  width: 12.5rem; /* 200px */
+  width: 12.5em; 
   background-color: rgb(17, 2, 2);
-  border: 0.125rem solid rgb(155, 17, 155); /* 2px */
-  box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1); /* 4px 6px */
-  border-radius: 0.5rem; /* 8px */
+  border: 0.125em solid rgb(155, 17, 155); 
+  box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.1); 
+  border-radius: 0.5em; 
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-1.25rem); /* -20px */
+  transform: translateY(-1.25em); 
   transition: all 0.3s ease-in-out;
   z-index: 1000;
 }
@@ -317,11 +317,11 @@ header {
 .dropdown-menu ul {
   list-style: none;
   margin: 0;
-  padding: 0.625rem 0; /* 10px 0 */
+  padding: 0.625em 0; 
 }
 
 .dropdown-menu ul li {
-  padding: 0.625rem 1.25rem; /* 10px 20px */
+  padding: 0.625em 1.25em; 
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-size: 1rem;
@@ -344,12 +344,12 @@ header {
   left: 50%;
   width: 12.5em; 
   background-color: rgb(17, 2, 2);
-  border: 0.125rem solid rgb(155, 17, 155);
+  border: 0.125em solid rgb(155, 17, 155);
   box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.1);
   border-radius: 0.5em;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-1.25rem);
+  transform: translateY(-1.25em);
   transition: all 0.3s ease-in-out;
   z-index: 1000;
 }
@@ -400,7 +400,7 @@ h1 {
   box-shadow: 0em 0.08em 0em 0.08em white;
 }
 
-#prowler-countdown  {
+#prowler-countdown {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -478,8 +478,8 @@ footer {
 
 .container-calendar #left h1 {
   display: flex;
+  justify-content: center;
 	color: black;
-	text-align: left;
   border: solid white;
 	background-color: rgb(129, 17, 124);
 	margin: 0;
