@@ -1,5 +1,6 @@
+/* this function makes everything that follows inside of it happen after the DOM content loads*/
 document.addEventListener("DOMContentLoaded", () => {
-  // === DOM Elements ===
+ /*these describe variables via the id's in the HTML so the JS knows that to act on later*/
   const overlay = document.getElementById("activate-overlay");
   const introSound = document.getElementById("introSound");
   const music = document.getElementById("audio");
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === Format Time ===
   const formatTime = (seconds) => {
+    // === describes how to calculate time for the variables ===
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs < 10 ? "0" : ""}${secs}`;

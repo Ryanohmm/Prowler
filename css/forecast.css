@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-image: linear-gradient(rgb(15, 88, 9), rgb(129, 17, 124));
+  background-image: linear-gradient( rgb(9, 133, 9), rgb(129, 17, 124));
   border: solid black;
   margin: 0;
   padding: 0;
@@ -13,8 +13,8 @@ main {
     align-items: flex-end;
     background: rgb(9, 133, 9);
     border: solid white;
-    margin: 50px;
-    padding: 30px;
+    margin: 1em;
+    padding: 0.625em;
 }
 
 header {
@@ -24,8 +24,8 @@ header {
  align-items: center;
  background: rgb(131, 19, 103);
  border: solid rgb(240, 243, 240);
- margin: 50px;
- padding: 25px;
+ margin: 3em;
+ padding: 2em;
 }
 
 #activate-overlay {
@@ -101,7 +101,7 @@ header {
   justify-content: center;
   margin: 0;
   font-family: 'Arial', sans-serif;
-  color: #fff;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,7 +113,7 @@ header {
   padding: 1.5em;
   text-align: center;
   background: rgb(129, 17, 124);
-  border-radius: 0.625rem;
+  border-radius: 0.625em;
   border: solid white;
   box-shadow: 0 0.25em 1em white;
 }
@@ -122,8 +122,8 @@ header {
   margin: 1.5em;
   padding: 1.5em;
   text-align: center;
-  background: rgb(15, 88, 9);
-  border-radius: 0.625rem;
+  background: rgb(9, 133, 9);
+  border-radius: 0.625em;
   border: solid white;
   box-shadow: 0 0.25em 1em black;
 }
@@ -174,12 +174,12 @@ header {
   background: #14c256;
   color: #fff;
   border: none;
-  padding: 0.625rem 1.25rem;
-  margin-bottom: 0.625rem;
-  border-radius: 0.3125rem;
+  padding: 0.625em 1.25em;
+  margin-bottom: 0.625em;
+  border-radius: 0.3125em;
   cursor: pointer;
   transition: background 0.3s;
-  font-size: 1rem;
+  font-size: 1em;
 }
 
 .btn:hover {
@@ -189,18 +189,18 @@ header {
 
 #seek-bar {
   width: 100%;
-  margin: 0.625rem 0;
+  margin: 0.625em 0;
   appearance: none;
-  height: 0.5rem;
+  height: 0.5em;
   background: linear-gradient(to right, #14c256 0%, #08500c 100%);
-  border-radius: 0.25rem;
+  border-radius: 0.25em;
   transition: background 0.3s ease;
 }
 
 #seek-bar::-webkit-slider-thumb {
   appearance: none;
-  width: 1rem;
-  height: 1rem;
+  width: 1em;
+  height: 1em;
   background: #f82ff0;
   border-radius: 50%;
   cursor: pointer;
@@ -212,7 +212,7 @@ header {
   width: 100%;
   margin: 1em 0; 
   appearance: none;
-  height: 0.5rem; 
+  height: 0.5em; 
   background: linear-gradient(to right, #14c256 0%, #08500c 100%);
   border-radius: 0.25em; 
   transition: background 0.3s ease;
@@ -230,7 +230,7 @@ header {
 
 #seek-bar::-webkit-slider-thumb:hover {
   transform: scale(1.2);
-  background: #fff;
+  background: white;
 }
 
 #seek-bar::-moz-range-thumb {
@@ -245,7 +245,7 @@ header {
 
 #seek-bar::-moz-range-thumb:hover {
   transform: scale(1.2);
-  background: #fff;
+  background: white;
 }
 
 #current-time,
@@ -255,19 +255,18 @@ header {
 
 .menu-container {
       position: relative;
-      width: 50px;
-      height: 50px;
+      width: 3em;
+      height: 1em;
       cursor: pointer;
     }
 
-    
     .menu-icon {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 30px;
-      height: 3px;
+      width: 3em;
+      height: 0.3em;
       background-color: black;
       transition: all 0.3s ease-in-out;
     }
@@ -276,8 +275,8 @@ header {
     .menu-icon::after {
       content: '';
       position: absolute;
-      width: 30px;
-      height: 3px;
+      width: 3em;
+      height: 0.3em;
       background-color: black;
       transition: all 0.3s ease-in-out;
     }
@@ -310,13 +309,13 @@ header {
 
     .dropdown-menu {
       position: absolute;
-      top: 60px;
+      top: 2.25em;
       left: 50%;
-      width: 200px;
+      width: 12em;
       background-color: rgb(17, 2, 2);
       border: solid rgb(155, 17, 155);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
+      box-shadow: 0 0.2em 0.25em rgba(0, 0, 0, 0.1);
+      border-radius: 0.3em;
       opacity: 0;
       visibility: hidden;
       transform: translateY(-20px);
@@ -326,17 +325,17 @@ header {
     .dropdown-menu ul {
       list-style: none;
       margin: 0;
-      padding: 10px 0;
+      padding: 0.6em 0;
     }
 
     .dropdown-menu ul li {
-      padding: 10px 20px;
+      padding: 0.6em 1em;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
     .dropdown-menu ul li:hover {
-      background-color: rgb(6, 58, 23);
+      background-color: rgb(9, 133, 9);
     }
 
     
@@ -349,10 +348,10 @@ header {
 ul li {
   list-style: none;
   display: flex;
-  border: solid rgb(8, 66, 18);
+  border: solid rgb(9, 133, 9);
   color: rgb(185, 25, 190);
-  padding-left: 24px;
-  margin-bottom: 8px;
+  padding-left: 1em;
+  margin-bottom: 0.3em;
 }
 
 footer{

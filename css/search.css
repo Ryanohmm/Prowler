@@ -1,11 +1,14 @@
+
+/* background appearance*/
 body {
   font-family: Arial, sans-serif;
-  background-image: linear-gradient(rgb(15, 88, 9), rgb(129, 17, 124));
+  background-image: linear-gradient(rgb(9, 133, 9), rgb(129, 17, 124));
   border: 0.1em solid black;
   margin: 0;
   padding: 0;
 }
 
+/* main flexbox appearance*/
 main {
   display: flex;
   flex-direction: row;
@@ -18,11 +21,13 @@ main {
   padding: 2em;
 }
 
+/* determining the scroll possiblity for the character cards specifically, although is applied to all html*/
 html, body {
   height: 100%;
   overflow-y: auto;
 }
 
+/* reaches for the header element so that I can determine the styling properties*/
 header {
   display: flex;
   flex-direction: row;
@@ -34,6 +39,7 @@ header {
   padding: 1.5em;
 }
 
+/* reaches for the activate overlay ID for styling purposes*/
 #activate-overlay {
   position: fixed;
   top: 0;
@@ -50,13 +56,13 @@ header {
   cursor: pointer;
   box-shadow: 0 0.25em 1em purple;
 }
-
+/* Same thing as above but for what it looks like when hovered on*/
 #activate-overlay:hover {
   color: purple;
   border: 0.1em solid purple;
   box-shadow: 0 0.25em 1em lime;
 }
-
+/* targets the class glitch-screen for styling*/
 .glitch-screen {
   position: fixed;
   top: 0;
@@ -71,7 +77,7 @@ header {
   z-index: 9998;
   animation: fadeOut 2s ease 2s forwards;
 }
-
+ /* allows for modification of the text on the glitch screen*/
 .glitch-text {
   font-size: 3em;
   font-family: 'Orbitron', sans-serif;
@@ -79,14 +85,14 @@ header {
   text-shadow: 0.125em 0.125em red, -0.125em -0.125em blue;
 }
 
-
+/*allows for modifications on the fadeout animation*/
 @keyframes fadeOut {
   to {
     opacity: 0;
     visibility: hidden;
   }
 }
-
+/* allows for glitch animation modifications */
 @keyframes glitch {
   0% { transform: translate(0); }
   20% { transform: translate(-2px, 2px); }
@@ -95,12 +101,12 @@ header {
   80% { transform: translate(1px, -1px); }
   100% { transform: translate(0); }
 }
-
+/*targets the animation on load so that in conjunction with html and JS it does its job*/
 .glitch-on-load {
   animation: glitch 0.15s steps(2, end) infinite;
   filter: hue-rotate(20deg) contrast(1.2);
 }
-
+/*targets the music-player class so that the background for the music player can be adjuster*/
 .music-player {
   margin: 1.5em;
   padding: 1.5em;
@@ -110,11 +116,11 @@ header {
   border: solid white;
   box-shadow: 0 0.25em 1em white;
 }
-
+/*same thing but hover*/
 .music-player:hover {
   background: rgb(9, 133, 9);
 }
-
+/*targets title class*/
 .title {
   display: flex;
   justify-content: center;
@@ -127,11 +133,11 @@ header {
   margin: 1em;
   padding: 1em;
 }
-
+/*targets title class but when mouse hovers over it*/
 .title:hover {
   color: white;
 }
-
+/*allows for controls class adjustment*/
 .controls {
   display: flex;
   flex-direction: column;
@@ -139,46 +145,42 @@ header {
   margin: 1em;
   padding: 1em;
 }
-
+/*same class, but for when the mouse hovers over it*/
 .controls:hover {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1em;
-  padding: 1em;
+  color:white;
 }
-
+/*targets btn class, in this cass for the button to pause music*/
 .btn {
   background: #14c256;
   color: #fff;
   border: none;
-  padding: 0.625rem 1.25rem;
-  margin-bottom: 0.625rem;
-  border-radius: 0.3125rem;
+  padding: 0.625em 1.25em;
+  margin-bottom: 0.625em;
+  border-radius: 0.3125em;
   cursor: pointer;
   transition: background 0.3s;
   font-size: 1rem;
 }
-
+/*hover adjustment*/
 .btn:hover {
   color: rgb(131, 19, 103);
   background: #0a0a0a;
 }
-
+/*targets seek-bar ID*/
 #seek-bar {
   width: 100%;
-  margin: 0.625rem 0;
+  margin: 0.625em 0;
   appearance: none;
-  height: 0.5rem;
+  height: 0.5em;
   background: linear-gradient(to right, #14c256 0%, #08500c 100%);
-  border-radius: 0.25rem;
+  border-radius: 0.25em;
   transition: background 0.3s ease;
 }
-
+/*targets ID but also makes it a slider*/
 #seek-bar::-webkit-slider-thumb {
   appearance: none;
-  width: 1rem;
-  height: 1rem;
+  width: 1em;
+  height: 1em;
   background: #f82ff0;
   border-radius: 50%;
   cursor: pointer;
@@ -190,7 +192,7 @@ header {
   width: 100%;
   margin: 1em 0; 
   appearance: none;
-  height: 0.5rem; 
+  height: 0.5em; 
   background: linear-gradient(to right, #14c256 0%, #08500c 100%);
   border-radius: 0.25em; 
   transition: background 0.3s ease;
@@ -225,7 +227,7 @@ header {
   transform: scale(1.2);
   background: #fff;
 }
-
+/*id locator to adjust current-time and duration*/
 #current-time,
 #duration {
   font-size: 0.875em; 
@@ -315,7 +317,7 @@ header {
 }
 
 .dropdown-menu ul li:hover {
-  background-color: rgb(6, 58, 23);
+  background-color: rgb(9, 133, 9);
 }
 
 
@@ -369,15 +371,14 @@ button:hover {
   box-shadow: 0 0.25em 0.5em rgb(129, 17, 124);
 }
 
-
 h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   text-decoration: none;
   color: rgb(90, 14, 109);
-  font-size: 1.5rem;
-  margin: 1rem;
+  font-size: 1.5em;
+  margin: 1em;
 }
 
 h1:hover {
@@ -389,19 +390,19 @@ h1:hover {
 #searchbar {
   display: flex;
   width: 80%;
-  padding: 1rem;
-  margin: 1rem auto;
-  font-size: 1rem;
-  border: 0.125rem solid rgb(129, 17, 124);
+  padding: 1em;
+  margin: 1em auto;
+  font-size: 1em;
+  border: 0.125em solid rgb(129, 17, 124);
   background-color: rgb(129, 17, 124);
   color: black;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 0.625rem #14c256;
+  border-radius: 0.5em;
+  box-shadow: 0 0 0.625em #14c256;
 }
 
 #searchbar:hover {
   background-color: rgb(9, 133, 9);
-  box-shadow: 0 0 0.625rem rgb(129, 17, 124);
+  box-shadow: 0 0 0.625em rgb(129, 17, 124);
 }
 
 #searchbar::placeholder {
@@ -423,7 +424,7 @@ h1:hover {
 }
 
 .autocomplete-list li {
-  padding: 0.5rem;
+  padding: 0.5em;
   cursor: pointer;
 }
 
@@ -505,8 +506,8 @@ h1:hover {
 }
 
 .character-card-back {
-  background-color: #111;
-  color: #fff;
+  background-color: rgb(129, 17, 124);
+  color: white;
   transform: rotateY(180deg);
   padding: 1rem;
   box-sizing: border-box;
@@ -518,182 +519,4 @@ h1:hover {
 
 .hidden {
   display: none;
-}
-
-
-
-@media (min-width: 600px) {
-  .music-player {
-    margin: 2rem auto;
-    padding: 2rem;
-    max-width: 600px;
-  }
-
-  .title {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .btn {
-    font-size: 1.125rem;
-    padding: 0.75rem 1.5rem;
-  }
-
-  #seek-bar {
-    height: 0.625rem;
-  }
-
-  #seek-bar::-webkit-slider-thumb {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-     #seek-bar {
-    height: 0.625rem;
-  }
-
-  #seek-bar::-webkit-slider-thumb,
-  #seek-bar::-moz-range-thumb {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-
-  #current-time,
-  #duration {
-    font-size: 1rem;
-
-    .menu-container {
-    width: 3.75rem; /* 60px */
-    height: 3.75rem;
-  }
-
-  .menu-icon,
-  .menu-icon::before,
-  .menu-icon::after {
-    width: 2.25rem; /* 36px */
-    height: 0.25rem; /* 4px */
-  }
-
-  .menu-icon::before {
-    transform: translateY(-0.75rem); /* -12px */
-  }
-
-  .menu-icon::after {
-    transform: translateY(0.75rem);
-  }
-
-  .dropdown-menu {
-    top: 4.5rem; /* 72px */
-    width: 15rem; /* 240px */
-    border-radius: 0.625rem; /* 10px */
-    box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.15); /* 6px 12px */
-  }
-
-  .dropdown-menu ul li {
-    padding: 0.75rem 1.5rem;
-    font-size: 1.125rem;
-  }
-
-  .dropdown-menu {
-    top: 4.5rem; /* 72px */
-    width: 15rem; /* 240px */
-    border-radius: 0.625rem; /* 10px */
-    box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.15); /* 6px 12px */
-  }
-
-  ul li {
-    padding-left: 2rem;
-    font-size: 1.125rem;
-  }
-
-  button {
-    padding: 1rem 2rem;
-    font-size: 1.125rem;
-  }
-
-  h1 {
-    font-size: 2rem;
-    margin: 1.5rem;
-  }
-
-  #searchbar {
-    width: 60%;
-    padding: 1.25rem;
-    font-size: 1.125rem;
-  }
-
-  .autocomplete-list {
-    font-size: 1.125rem;
-  }
-
-  .autocomplete-list li {
-    padding: 0.75rem;
-  }
-
- .wrapper {
-    gap: 1rem;
-    padding: 2rem;
-  }
-
-  .spinner {
-    width: 4rem;
-    height: 4rem;
-    border-width: 0.5rem;
-  }
-
-  .character-grid {
-    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); 
-    gap: 1.5rem;
-    padding: 2.5rem;
-  }
-
-  .character-card {
-    width: 14em; 
-    height: 20em; 
-  }
-
-  .character-card-back {
-    padding: 1.25em;
-  }
-}
-
-footer {
-    padding: 1.5em;
-    font-size: 1.125em;
-  }
-
-  .promo {
-    padding: 1.25em;
-    font-size: 1.125em;
-    margin: 1.5em;
-  }
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}  
-}
-
-footer {
-  display: flex;
-  justify-content: center;
-  padding: 1em;
-  font-size: 1rem;
-}
-
-.promo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgb(187, 154, 187);
-  color: rgb(5, 5, 5);
-  padding: 1em;
-  font-size: 1em;
-  border-radius: 0.5em;
-  margin: 1em;
-}
-
-.promo:hover {
-  background: black;
-  color: rgb(187, 29, 192);
 }

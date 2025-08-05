@@ -1,5 +1,6 @@
+/* this function makes everything that follows inside of it happen after the DOM content loads*/
 document.addEventListener("DOMContentLoaded", () => {
-  // === DOM Elements ===
+  /*these describe the id's in the HTML so the JS knows that to act on later*/
   const overlay = document.getElementById("activate-overlay");
   const introSound = document.getElementById("introSound");
   const music = document.getElementById("audio");

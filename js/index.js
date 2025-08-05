@@ -1,4 +1,6 @@
+/* this function makes everything that follows inside of it happen after the DOM content loads*/
 document.addEventListener("DOMContentLoaded", function () {
+  /*these describe the id's in the HTML so the JS knows that to act on later*/
   const loginCredentials = "Spider-man";
   const loginPassword = "Jefferson";
   const form = document.getElementById("prowler-form");

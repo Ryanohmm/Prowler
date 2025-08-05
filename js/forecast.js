@@ -1,4 +1,6 @@
+/* this function makes everything that follows inside of it happen after the DOM content loads*/
 document.addEventListener("DOMContentLoaded", () => {
+  /*these describe the id's in the HTML so the JS knows that to act on later*/
   const overlay = document.getElementById("activate-overlay");
   const introSound = document.getElementById("introSound");
   const music = document.getElementById("audio");
@@ -10,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ["Crime", "Criminals", "Masked Entrance", "Powers", "Threats"],
+      labels: ["Crime", "Miles' School", "Miles' Entrance", "Proximity to Home", "Threats"],
       datasets: [{
         backgroundColor: ["white", "purple", "red", "orange", "black"],
         data: [42, 40, 48, 45, 37]
