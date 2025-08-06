@@ -4,15 +4,14 @@ const cors = require('cors')
 const port = 3000
 const crypto = require('crypto');
 require('dotenv').config()
-
+const path = require('path');
 const md5 = crypto.createHash('md5');
 
 app.use(cors())
-
+app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-    const string = getString();
-    res.send(string);
+    res.sendFile(path.join(__dirname, '../html/index.html'));
 })
 
 app.get('/characters', async (req, res) => {

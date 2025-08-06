@@ -28,11 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
       scales: {
         xAxes: [{
           ticks: { fontColor: "white" },
-          gridLines: { color: "rgba(255,255,255,0.1)" }
+          gridLines: { color: "rgb(129, 17, 124)" }
         }],
         yAxes: [{
           ticks: { fontColor: "white" },
-          gridLines: { color: "rgba(255,255,255,0.1)" }
+          gridLines: { color: "rgb(129, 17, 124)" }
         }]
       }
     }

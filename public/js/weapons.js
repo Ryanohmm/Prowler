@@ -123,7 +123,7 @@ let eventDateInput = document.getElementById("eventDate");
 let eventTitleInput = document.getElementById("eventTitle");
 let eventDescriptionInput = document.getElementById("eventDescription");
 let reminderList = document.getElementById("reminderList");
-
+document.getElementById("addEvent").addEventListener("click", addEvent);
 // Counter to generate unique event IDs
 let eventIdCounter = 1;
 
