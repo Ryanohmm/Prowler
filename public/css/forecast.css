@@ -39,6 +39,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   font-size: 2rem;
   z-index: 9999;
   cursor: pointer;
@@ -309,9 +310,9 @@ header {
 
     .dropdown-menu {
       position: absolute;
-      top: 2.25em;
+      top: 3.75em;
       left: 50%;
-      width: 12em;
+      width: 12.5em;
       background-color: rgb(17, 2, 2);
       border: solid rgb(155, 17, 155);
       box-shadow: 0 0.2em 0.25em rgba(0, 0, 0, 0.1);

@@ -1,1 +1,20 @@
-# Prowler
+Hello and welcome to my Prowler Website. My goal was to follow the guidelines whilst making as immersive a website as I could within my chosen theme of the Prowler giving his nephew, Miles Morales, A.K.A, Spider-Man, control of his website. The key features that were necessary include autocomplete, a fetch API, a chart displaying data using Chart.js, regular expressions for form validation and calculating and displaying countdown data. I enhanced the feel of the website with timeout features that allow for sounds and autoplay music to induce a more fitting ambiance. 
+
+So, when opening this in Visual Studio Code, you're going to want to install Express. To do so, you would choose the terminal of your choice (I choose Git Bash as it seems to be the easiest.) You can click Terminal at the top left of VSCode one to the left of help and select new terminal. In the top right of the terminal, there is an x button to close it. 5 icons from the x button to the left, you can click the downward facing arrow and select bash instead of powershell if that is the default option. https://dev.to/iam_prashanth_ks/how-to-install-expressjs-in-vs-code-in-2025-14mi here is a link to installing Express just in case my explanation falls short. To install Express, you need to install Node.js first. https://nodejs.org/en is the link to install node on your device. Once Node is installed, you would want to check its success in the terminal by running node-v and enter. Then Npm -v and enter. This will show the version of node and node package manager installed. Next, you would want to input (npm install --save-dev nodemon) into the terminal. Now, enter npm init -y, wait and then npm install express. Enter npm start. Then either the go live button at the bottom right of VS Code or in your browser of choice, localhost:3000.
+
+                                                Start Page:
+
+Wait 5 seconds for the glitch animation to load, then click "Click Here to Activate Terminal". A screen glitch and glitch sound should happen on the form validation page. If the glitch screen does not appear, refresh the page for a more immersive experience. The Username is Spider-man and the Password is Jefferson, capitals and dashes exactly as written. Click on the login button. This will take you to the Unmasking the Hero Page.
+
+                                                Unmasking the Hero Page:
+
+Wait 3 seconds to let the glitch screen animation load, then click "Click Here to Activate Terminal". Another glitch sound and screen animation will occur, however, this time, after a few seconds, music will begin to play. You can pause the music once it starts, but if you press play and or pause before it automatically begins, it will keep playing. The chart at the top of the screen depicts how the Prowler discoverd Miles was Spider-man. If you click on the hamburger menu at the top middle of the page, and click Search, you will get to the next page. This is the API integrated search feature page.
+
+                                                Search Page:
+
+Each subsequent page will have music of some kind to pause after the intro glitch sound. On this page, underneath the music player, the search feature is a searchbar and two buttons. Submit and reset. If you input a search for a name, you will see autocomplete attempt to fetch the api data to fill in the available response. It caps at 5 possibilities. So if there is a ton of options, only the first alphabetical five will be displayed. You can either finish your search or click on the name and have autocomplete complete the request then click submit. A character card will appear which, when clicked will flip and show that back of the back which will have the character information. I would suggest using Spider as a search term as it gathers quite a few results and you can experiment easily.
+
+                                                Location Page: 
+
+This page has a countdown timer for the next Spider-Verse Movie and a Calendar that you can use to navigate by day or year or setup event reminders. Those reminders can then be deleted. The countdown feature here is the required feature, the rest is window dressing to fill out the immersive experience and feel like a real website. 
+

@@ -329,7 +329,7 @@ header {
 
 .dropdown-menu {
   position: absolute;
-  top: 3.75rem; 
+  top: 3.75em; 
   left: 50%;
   width: 12.5em; 
   background-color: rgb(17, 2, 2);
@@ -346,7 +346,7 @@ header {
 ul li {
   list-style: none;
   display: flex;
-  border: 0.125rem solid rgb(8, 66, 18);
+  border: 0.125em solid rgb(9, 133, 9);
   color: rgb(185, 25, 190);
   padding-left: 1.5em; 
   margin-bottom: 0.5em;
@@ -389,7 +389,7 @@ h1:hover {
 
 #searchbar {
   display: flex;
-  width: 80%;
+  width: auto;
   padding: 1em;
   margin: 1em auto;
   font-size: 1em;
@@ -520,3 +520,16 @@ h1:hover {
 .hidden {
   display: none;
 }
+
+.promo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgb(187, 154, 187);
+            color: rgb(5, 5, 5);
+        }
+
+ .promo:hover {
+            background: black;
+            color: rgb(187, 29, 192);
+        }
